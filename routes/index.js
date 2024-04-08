@@ -22,12 +22,21 @@ router.post('/new-customer', function(req, res) {
     newCustomer.save()
         .then(() => {
             console.log("New customer profile is created");
-            res.send("Customer profile created successfully");
+        })
+        .then(() => {
+            res.redirect("http://localhost:5173");
         })
         .catch(err => {
             console.log(err);
             res.status(500).send("Error creating customer profile");
         });
 });
+
+router.get('/db', async function(req, res) {
+    const users = await CustomerModel.find({});
+    console.log(users);
+    res.send(users);
+  });
+
 
 module.exports = router;
