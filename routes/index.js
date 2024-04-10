@@ -15,7 +15,8 @@ router.post('/new-customer', function(req, res) {
         email: email,
         phone: phone,
         productQuantity: productQuantity,
-        orderTime: currentTime
+        orderTime: currentTime,
+        status: 0,
     });
 
     
@@ -34,9 +35,23 @@ router.post('/new-customer', function(req, res) {
 
 router.get('/db', async function(req, res) {
     const users = await CustomerModel.find({});
-    console.log(users);
     res.send(users);
   });
 
+router.post('/delete', async function(req, res){
+    const {id} = req.body;
+    await CustomerModel.findByIdAndDelete(id);
+    res.sendStatus(200);
+});
 
+router.post('/updateStatus/OnTheWay', async function(req,res){
+    const {id} = req.body;
+    await CustomerModel.findByIdAndUpdate(id, {status: 1});
+    res.sendStatus(200);
+})
+router.post('/updateStatus/Delivered', async function(req,res){
+    const {id} = req.body;
+    await CustomerModel.findByIdAndUpdate(id, {status: 2});
+    res.sendStatus(200);
+})
 module.exports = router;
