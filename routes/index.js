@@ -31,27 +31,37 @@ router.post('/new-customer', function(req, res) {
             console.log(err);
             res.status(500).send("Error creating customer profile");
         });
+        var datetime = new Date();
+        console.log("\x1b[92m" + datetime.toLocaleString('vi-VN') + "\x1b[37m");
 });
 
 router.get('/db', async function(req, res) {
     const users = await CustomerModel.find({});
+    var datetime = new Date();
+    console.log("\x1b[92m" + datetime.toLocaleString('vi-VN') + "\x1b[37m");
     res.send(users);
   });
 
 router.post('/delete', async function(req, res){
     const {id} = req.body;
     await CustomerModel.findByIdAndDelete(id);
+    var datetime = new Date();
+    console.log("\x1b[92m" + datetime.toLocaleString('vi-VN') + "\x1b[37m");
     res.sendStatus(200);
 });
 
 router.post('/updateStatus/OnTheWay', async function(req,res){
     const {id} = req.body;
     await CustomerModel.findByIdAndUpdate(id, {status: 1});
+    var datetime = new Date();
+    console.log("\x1b[92m" + datetime.toLocaleString('vi-VN') + "\x1b[37m");
     res.sendStatus(200);
 })
 router.post('/updateStatus/Delivered', async function(req,res){
     const {id} = req.body;
     await CustomerModel.findByIdAndUpdate(id, {status: 2});
+    var datetime = new Date();
+    console.log("\x1b[92m" + datetime.toLocaleString('vi-VN') + "\x1b[37m");
     res.sendStatus(200);
 })
 module.exports = router;
