@@ -25,7 +25,7 @@ router.post('/new-customer', function(req, res) {
             console.log("New customer profile is created");
         })
         .then(() => {
-            res.redirect("http://localhost:5173");
+            res.redirect("back");
         })
         .catch(err => {
             console.log(err);
