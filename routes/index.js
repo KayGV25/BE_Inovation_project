@@ -64,4 +64,11 @@ router.post('/updateStatus/Delivered', async function(req,res){
     console.log("\x1b[92m" + datetime.toLocaleString('vi-VN') + "\x1b[37m");
     res.sendStatus(200);
 })
+router.post('/updateStatus/Cancled', async function(req,res){
+    const {id} = req.body;
+    await CustomerModel.findByIdAndUpdate(id, {status: 3});
+    var datetime = new Date();
+    console.log("\x1b[92m" + datetime.toLocaleString('vi-VN') + "\x1b[37m");
+    res.sendStatus(200);
+})
 module.exports = router;
