@@ -10,7 +10,7 @@ router.post('/new-customer', function(req, res) {
     let currentTime = new Date();
     
     let newCustomer = new CustomerModel({
-        name: name,
+        name: name.toLowerCase(),
         address: address,
         email: email,
         phone: phone,
@@ -49,6 +49,15 @@ router.post('/delete', async function(req, res){
     console.log("\x1b[92m" + datetime.toLocaleString('vi-VN') + "\x1b[37m");
     res.sendStatus(200);
 });
+
+router.post('/getByPhone', async function(req, res) {
+    const {name} = req.body;
+    if(name == "*") users = await CustomerModel.find();
+    else users = await CustomerModel.find({phone: name});
+    var datetime = new Date();
+    console.log("\x1b[92m" + datetime.toLocaleString('vi-VN') + "\x1b[37m");
+    res.send(users);
+  });
 
 router.post('/updateStatus/OnTheWay', async function(req,res){
     const {id} = req.body;
