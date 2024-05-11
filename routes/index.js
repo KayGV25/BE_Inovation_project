@@ -129,7 +129,6 @@ async function Update(User, Type){
     //Read rows from spreadsheet
   
     const cord = User.Cid[0];
-    console.log(cord);
     await googleSheets.spreadsheets.values.update({
         auth,
         spreadsheetId,
