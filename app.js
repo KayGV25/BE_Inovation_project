@@ -24,7 +24,7 @@ app.set('view engine', 'ejs');
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = "mongodb+srv://khuongvudang25:Rww0LKy6WOxNtJlY@cluster0.g79zpyx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const mongoDB = "mongodb+srv://khuongvudang25:AkQjeu1VuA2ZErFa@cluster0.pq9otdt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 main().catch((err) => console.log(err));
 async function main() {
 await mongoose.connect(mongoDB);
