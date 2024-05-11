@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const CustomerSchema = new Schema({
+    Cid: {type: String, required: true},          
     name: { type: String, required: true },     // Tên của khách hàng
     address: { type: String, required: true },  // Địa chỉ của khách hàng
     email: { type: String, required: true },    // Địa chỉ email của khách hàng
